@@ -10,7 +10,6 @@
         h2 { color: var(--deep-crimson); display: flex; justify-content: space-between; align-items: center; }
         label { display: block; margin: 15px 0 5px; font-weight: bold; font-size: 0.9rem; }
         
-        /* 날짜 입력을 나란히 배치하기 위한 스타일 */
         .date-group { display: flex; gap: 10px; margin-bottom: 5px; }
         .date-item { flex: 1; }
         
@@ -41,9 +40,9 @@
             <option value="총학생회">총학생회</option>
             <option value="문과대학">문과대학</option>
             <option value="영어영문학과">영어영문학과</option>
+            <option value="고대포털">고대포털</option>
         </select>
 
-        <!-- 행사 기간 입력 (시작일 ~ 종료일) -->
         <div class="date-group">
             <div class="date-item">
                 <label>행사 시작일</label>
@@ -57,10 +56,10 @@
 
         <label>카테고리</label>
         <select id="category">
-            <option value="제휴">제휴 업체</option>
-            <option value="이벤트">이벤트/행사</option>
-            <option value="멘토링">멘토링/학업</option>
-            <option value="학생회">학생회 소식</option>
+            <option value="제휴 업체">제휴 업체</option>
+            <option value="이벤트/행사">이벤트/행사</option>
+            <option value="멘토링/학업">멘토링/학업</option>
+            <option value="학생회 소식">학생회 소식</option>
         </select>
 
         <label>공지 제목</label>
@@ -94,7 +93,6 @@
                 return;
             }
 
-            // 시작일이 종료일보다 늦은지 검사
             if (new Date(startDate) > new Date(endDate)) {
                 alert('시작일은 종료일보다 빨라야 합니다.');
                 return;
