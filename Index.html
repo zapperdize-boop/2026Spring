@@ -55,22 +55,19 @@
     <div class="menu-item" onclick="filterData('멘토링/학업', this)">멘토링/학업</div>
     <div class="menu-item" onclick="filterData('학생회 소식', this)">학생회 소식</div>
     
-    <!-- [추가] 고대생 필수 퀵 링크 세트 -->
     <div class="quick-links">
         <h3>KU ESSENTIALS</h3>
         <a href="https://portal.korea.ac.kr" target="_blank" class="link-item">🏛 KUPID (고대포털)</a>
-        <a href="https://klms.korea.ac.kr" target="_blank" class="link-item">💻 KU LMS (블랙보드)</a>
+        <a href="https://lms.korea.ac.kr" target="_blank" class="link-item">💻 KU LMS (블랙보드)</a>
         <a href="https://sugang.korea.ac.kr" target="_blank" class="link-item">🖱 수강신청 시스템</a>
-        <a href="https://registrar.korea.ac.kr/registrar/index.do" target="_blank" class="link-item">📅 학사일정/공지사항</a>
         <a href="https://job.korea.ac.kr" target="_blank" class="link-item">💼 경력개발센터 (취업)</a>
-        <a href="https://korea.ac.kr/user/boardList.do?boardId=474&siteId=university" target="_blank" class="link-item">💰 장학금 공지게시판</a>
+        <a href="https://scholarship.korea.ac.kr/scholarship/application/notice.do" target="_blank" class="link-item">💰 장학금 공지게시판</a>
     </div>
 
     <a href="admin.html" style="margin-top:auto; color:#555; text-decoration:none; font-size:0.8rem; padding-left: 10px;">⚙️ 관리자 모드</a>
 </nav>
 
 <main>
-    <!-- 상단 출처별 탭 -->
     <div class="source-tabs">
         <div class="source-tab active" onclick="filterBySource('전체', this)">#전체</div>
         <div class="source-tab" onclick="filterBySource('총학생회', this)">#총학생회</div>
@@ -153,10 +150,11 @@
         `).join('');
     }
 
+    /* [버그 수정] 제휴 업체 등 띄어쓰기가 포함된 카테고리도 정확히 필터링 되도록 정밀 일치(===)로 수정 */
     function applyFilters() {
         let all = getNotices();
         if (currentCategory !== '전체') {
-            all = all.filter(n => n.category.includes(currentCategory.split('/')[0]));
+            all = all.filter(n => n.category === currentCategory);
         }
         if (currentSource !== '전체') all = all.filter(n => n.source === currentSource);
         render(all);
